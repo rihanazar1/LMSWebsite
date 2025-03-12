@@ -1,4 +1,4 @@
-import {Webhook} from 'svix'
+const { Webhook } = require('svix');
 const User = require('../model/user.model')
 const config = require('../config/config')
 
@@ -9,7 +9,7 @@ module.exports.clerkWebhooks = async (req, res) => {
         const whook = new Webhook(config.CLERK_WEBHOOK_SECRET)
 
         await whook.verify(JSON.stringify(req.body),{
-            "svix-id" : req.headers["svix-timestamp"],
+            "svix-id" : req.headers["svix-id"],
             "svix-timestamp" : req.headers["svix-timestamp"],
             "svix-signature" : req.headers["svix-signature"]
         })
@@ -32,7 +32,7 @@ module.exports.clerkWebhooks = async (req, res) => {
                 
             case 'user.updated':{
                 const userData = {
-                    email : data.email_address[0].email_address,
+                    email : data.email_addresses[0].email_address,
                     name : data.first_name + " " + data.last_name,
                     imageUrl : data.image_url,
                 }
