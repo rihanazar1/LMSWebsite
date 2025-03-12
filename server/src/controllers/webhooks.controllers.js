@@ -1,4 +1,4 @@
-const Webhook = require('svix')
+import {Webhook} from 'svix'
 const User = require('../model/user.model')
 const config = require('../config/config')
 
