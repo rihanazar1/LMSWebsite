@@ -2,6 +2,7 @@ const {clerkClient} = require('@clerk/express');
 const Course = require('../model/course.model');
 const {v2 : cloudinary} = require('cloudinary');
 const Purchase = require('../model/purchase.model');
+const User = require('../model/user.model')
 
 
 //update role to educator
