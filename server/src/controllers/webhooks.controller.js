@@ -2,7 +2,6 @@ const { Webhook } = require('svix');
 const User = require('../model/user.model')
 const config = require('../config/config');
 const { default: Stripe } = require('stripe');
-const config = require('../config/config');
 const Purchase = require('../model/purchase.model');
 const Course = require('../model/course.model');
 
