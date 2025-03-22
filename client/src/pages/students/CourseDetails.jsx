@@ -26,6 +26,7 @@ const CourseDetails = () => {
 
       if(data.success){
         setCourseData(data.courseData)
+        // console.log(data)
       }else{
         toast.error(data.message)
       }
@@ -67,7 +68,9 @@ const CourseDetails = () => {
 
   useEffect(() => {
     if(userData && courseData){
-      setIsAlreadyEnrolled(userData.enrollCourses.includes(courseData._id))
+      setIsAlreadyEnrolled(userData.enrolledCourses.includes(courseData._id))
+      // console.log("userData:", userData);
+      // console.log("userData.enrollCourses:", userData?.enrollCourses);
     }
   },[userData, courseData])
 

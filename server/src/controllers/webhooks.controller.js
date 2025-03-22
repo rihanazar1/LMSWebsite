@@ -1,7 +1,7 @@
 const { Webhook } = require('svix');
 const User = require('../model/user.model')
 const config = require('../config/config');
-const { default: Stripe } = require('stripe');
+const Stripe = require('stripe');
 const Purchase = require('../model/purchase.model');
 const Course = require('../model/course.model');
 
@@ -61,17 +61,24 @@ module.exports.clerkWebhooks = async (req, res) => {
     }
 }
 
+
+
 const stripeInstance = new Stripe(config.STRIPE_SECRET_KEY);
 
-module.exports.stripeWebhooks = async (req, res)=> {
+module.exports.stripeWebhooks = async (request, response)=> {
+
+    console.log("Stripe Webhook Hit");
+
     const sig = request.headers['stripe-signature'];
 
     let event;
   
     try {
-      event = Stripe.webhooks.constructEvent(request.body, sig, endpointSecret, config.STRIPE_WEBHOOK_SECRET);
+      event = Stripe.webhooks.constructEvent(request.body, sig, config.STRIPE_WEBHOOK_SECRET);
+      console.log("✅ Webhook Verified Successfully");
     }
     catch (err) {
+      console.log("❌ Webhook Signature Error:", err.message);
       response.status(400).send(`Webhook Error: ${err.message}`);
     }
 
@@ -80,6 +87,7 @@ module.exports.stripeWebhooks = async (req, res)=> {
     case 'payment_intent.succeeded':{
       const paymentIntent = event.data.object;
       const paymentIntentId = paymentIntent.id;
+      console.log("💰 Payment Successful:", paymentIntentId);
 
       const session = await stripeInstance.checkout.sessions.list({
         payment_intent: paymentIntentId
@@ -99,6 +107,7 @@ module.exports.stripeWebhooks = async (req, res)=> {
 
       purchaseData.status = 'completed'
       await purchaseData.save()
+      console.log("✅ Purchase Status Updated to Completed");
 
       break;
     }
@@ -120,8 +129,12 @@ module.exports.stripeWebhooks = async (req, res)=> {
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
-
+  
+  console.log("Received Event:", request.body);
     // Return a response to acknowledge receipt of the event
     response.json({received: true});
 
 }
+
+
+

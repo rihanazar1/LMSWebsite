@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 import Loading from '../../components/student/Loading'
 import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const MyCourses = () => {
 

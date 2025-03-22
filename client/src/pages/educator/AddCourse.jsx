@@ -227,7 +227,7 @@ useEffect(() =>{
                   type="text"
                   className='mt-1 block w-full border rounded py-1 px-2' 
                   value={lectureDetails.lectureDuration}
-                  onChange={(e) => setLectureDetails({...lectureDetails, lectureTitle: e.target.value})}/>
+                  onChange={(e) => setLectureDetails({...lectureDetails, lectureDuration: e.target.value})}/>
                 </div>
 
                 <div className='mb-2'>

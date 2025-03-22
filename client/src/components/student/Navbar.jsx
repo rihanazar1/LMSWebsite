@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useClerk, useUser, UserButton } from '@clerk/clerk-react'
 import { AppContext } from '../../context/AppContext'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
 

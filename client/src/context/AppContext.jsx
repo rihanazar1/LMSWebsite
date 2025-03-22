@@ -23,19 +23,44 @@ export const AppContextProvider = (props) =>{
     const [enrolledCourses, setEnrolledCourses] = useState([])
     const [userData, setUserData] = useState(null)
 
+    //Fetch All Courses 
     const fetchAllCourses = async () =>{
+        // setAllCourses(dummyCourses)
         try {
-            await axios.get(backendUrl + '/api/course/all')
+            const {data} = await axios.get(backendUrl + '/api/course/all')
 
             if(data.success){
                 setAllCourses(data.courses)
-                console.log(data)
+                // console.log(data)
             }else{
                 toast.error(data.message)
             }
+
+            // const response = await axios.get(backendUrl + '/api/course/all')
+            // console.log(response.data.courses)
+
+            // if (response.data.success) {
+            //     setAllCourses(response.data.courses)
+            //     // console.log(response.data)
+            // } else {
+            //     toast.error(response.data.message)
+            // }
+
         } catch (error) {
             toast.error(error.message)
-        }
+        }      
+        // await axios.get(backendUrl + '/api/course/all')
+        // .then(res => {
+        //     if(res.data.success){
+        //         setAllCourses(res.data.courses)
+        //         console.log(res.data)
+        //     }else{
+        //         toast.error(res.data.message)
+        //     }
+        // })
+        // .catch(error => {
+        //     toast.error(error.message)
+        // })
     }
 
 // Fetch UserData    
@@ -48,7 +73,7 @@ export const AppContextProvider = (props) =>{
         try {
             const token = await getToken();
 
-            await axios.get(backendUrl + '/api/user/data', {
+           const {data} = await axios.get(backendUrl + '/api/user/data', {
              headers: {Authorization : `Bearer ${token}`}
             })
 
@@ -123,12 +148,18 @@ export const AppContextProvider = (props) =>{
         fetchAllCourses()
     }, [])
 
+    const logToken = async () => {
+        console.log(await getToken())
+    }
+
     useEffect(() => {
         if(user){
             fetchUserData()
             fetchUserEnrolledCourses()
+            logToken()
         }
     }, [user])
+
     
 
     const value = {

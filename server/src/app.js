@@ -22,4 +22,4 @@ app.use('/api/course', express.json(), courseRoutes)
 app.use('/api/user', express.json(), userRoutes)
 app.post('/stripe', express.raw({type : 'application/json'}), webhookController.stripeWebhooks)
 
-module.exports = app
+module.exports = app 

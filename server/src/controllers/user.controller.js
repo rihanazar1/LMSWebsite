@@ -1,7 +1,7 @@
 const Course = require("../model/course.model")
 const User = require("../model/user.model")
 const config = require("../config/config")
-const { default: Stripe } = require("stripe")
+const  Stripe = require("stripe")
 const Purchase = require("../model/purchase.model")
 const CourseProgress = require("../model/courseProgress.model")
 
@@ -42,9 +42,9 @@ module.exports.purchaseCourse = async (req, res) => {
         const {origin} = req.headers
         const userId = req.auth.userId
         const userData = await User.findById(userId)
-        console.log(userData)
+        // console.log(userData)
         const courseData  = await Course.findById(courseId)
-        console.log(courseData)
+        // console.log(courseData)
 
         if(!userData || !courseData){
            return res.json({success : false, message: 'Data Not Found' })
@@ -62,7 +62,7 @@ module.exports.purchaseCourse = async (req, res) => {
 
         const stripeInstance = new Stripe(config.STRIPE_SECRET_KEY) 
 
-        const currency = config.CURRENCY.toLocaleLowerCase()
+        const currency = config.CURRENCY.toLowerCase()
 
         //Creating line items to for Stripe
 
