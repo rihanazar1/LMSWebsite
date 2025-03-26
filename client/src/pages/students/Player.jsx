@@ -13,7 +13,7 @@ import Loading from '../../components/student/Loading'
 
 const Player = () => {
 
-  const {enrolledCourses, calculateChapterTime, backendUrl, getToken, userData, fetchuserEnrolledCourses} = useContext(AppContext)
+  const {enrolledCourses, calculateChapterTime, backendUrl, getToken, userData, fetchUserEnrolledCourses} = useContext(AppContext)
 
   const {courseId} = useParams()
 
@@ -89,7 +89,7 @@ const Player = () => {
 
       if(data.success){
         toast.success(data.message)
-        fetchuserEnrolledCourses()
+        fetchUserEnrolledCourses()
       }else{
         toast.error(data.message)
       }

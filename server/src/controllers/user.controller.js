@@ -35,7 +35,6 @@ module.exports.userEnrolledCourses = async (req, res) => {
 
 
 // Purchase Course
-
 module.exports.purchaseCourse = async (req, res) => {
     try {
         const {courseId} = req.body
@@ -94,8 +93,9 @@ module.exports.purchaseCourse = async (req, res) => {
     }
 }
 
-// Update User Course Progress
 
+
+// Update User Course Progress
 module.exports.updateUserCourseProgress = async (req, res) => {
     try{
         const userId = req.auth.userId
@@ -125,8 +125,8 @@ module.exports.updateUserCourseProgress = async (req, res) => {
     }
 }
 
-// get User Course Progress 
 
+// get User Course Progress 
 module.exports.getUserCourseProgress = async (req, res) => {
     try{
         const userId = req.auth.userId
@@ -168,6 +168,8 @@ module.exports.addUserRating = async (req, res) => {
 
         if(existingRatingIndex > -1){
             course.courseRatings[existingRatingIndex].rating = rating;
+        }else{
+            course.courseRatings.push({userId, rating})
         }
 
         await course.save();
