@@ -3,7 +3,7 @@ const User = require('../model/user.model')
 const config = require('../config/config');
 const Stripe = require('stripe');
 const Purchase = require('../model/purchase.model');
-const Course = require('../model/course.model');
+const Course = require('../model/course.model'); 
 
 //API Controller Function to manage Clerk User with database
 

@@ -105,7 +105,7 @@ const handleSubmit = async (e) => {
       courseDescription : quillRef.current.root.innerHTML,
       coursePrice: Number(coursePrice),
       discount: Number(discount),
-      coursecontent : chapters,
+      courseContent : chapters,
     }
 
     const formData = new FormData()
