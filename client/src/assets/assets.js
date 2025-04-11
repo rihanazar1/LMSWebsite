@@ -42,10 +42,14 @@ import profile_img from './profile_img.png'
 import profile_img2 from './profile_img2.png'
 import profile_img3 from './profile_img3.png'
 import lesson_icon from './lesson_icon.svg'
+import CourseCampLogo from './CourseCampLogo.png'
+import CourseCamp from './CourseCamp.png'
 
 
 export const assets = {
     logo,
+    CourseCampLogo,
+    CourseCamp,
     search_icon,
     sketch,
     microsoft_logo,

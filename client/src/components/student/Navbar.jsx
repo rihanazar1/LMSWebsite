@@ -37,23 +37,23 @@ const Navbar = () => {
     }
 
   return (
-    <div className={`flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 border-b border-gray-500 py-4 ${isCourseListPage ? 'bg-white' : 'bg-gradient-to-r from-indigo-500 from-5% via-sky-500 via-30% to-purple-500 to-90%'}`}>
+    <div className={`flex items-center justify-between px-4 sm:px-20 md:px-14 lg:px-36 border-b border-gray-500 py-2 ${isCourseListPage ? 'bg-white' : 'bg-gradient-to-r from-indigo-500 from-5% via-sky-500 via-30% to-purple-500 to-90%'}`}>
 
-        <img  onClick={()=> navigate('/')} src={assets.logo} alt="Logo" className='w-28 lg:w-32 cursor-pointer'/>
+        <img  onClick={()=> navigate('/')} src={assets.CourseCampLogo} alt="Logo" className='w-40 lg:w-48 cursor-pointer'/>
 
-        <div className='hidden md:flex items-center gap-5 text-gray-500'>
-            <div className='flex items-center gap-5'>
+        <div className='hidden md:flex items-center gap-5 text-white text-lg'>
+            <div className='flex items-center gap-5 '>
                 { user && 
                 <>
-                    <button onClick={becomeEducator} >{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
-                    | <Link to='/my-enrollments' >My Enrollments</Link>
+                    <button className='hover:text-black duration-700' onClick={becomeEducator} >{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
+                    | <Link to='/my-enrollments' className='hover:text-black duration-700' >My Enrollments</Link>
                 </>
                 }
             </div>
             
             { user ? <UserButton/> : 
                 
-                <button onClick={()=> openSignIn()} className='bg-blue-600 text-white px-5 py-2 rounded-full'>Create Account</button>
+                <button onClick={()=> openSignIn()} className='text-white px-5 py-2 rounded-full bg-gradient-to-r from-teal-400 to-blue-500 hover:from-pink-500 hover:to-orange-500'>Create Account</button>
             }
         </div>
 

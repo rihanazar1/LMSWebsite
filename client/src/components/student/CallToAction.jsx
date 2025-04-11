@@ -8,7 +8,7 @@ const CallToAction = () => {
       <p className='text-gray-500 sm:text-sm'>Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam aliqua proident excepteur commodo do ea.
       </p>
       <div className='flex items-center font-medium gap-6 mt-4'>
-        <button className='px-10 py-3 rounded-md text-white bg-blue-600'>Get Started</button>
+        <button className='px-10 py-3 rounded-md text-white bg-gradient-to-r from-teal-400 to-blue-500 hover:text-black'>Get Started</button>
         <button className='flex items-center gap-2'>Learn more <img src={assets.arrow_icon} alt="arrow_icon" /></button>
       </div>
     </div>

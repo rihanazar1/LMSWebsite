@@ -22,7 +22,10 @@ export default {
       },
       boxShadow:{
         'custom-card' : '0px 4px 15px 2px rgba(0,0,0,0.1)'
-      }
+      },
+      // transitionDuration: {
+      //   '2000': '2000ms',
+      // }
     },
   },
   plugins: [],
