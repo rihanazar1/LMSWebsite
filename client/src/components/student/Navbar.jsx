@@ -37,7 +37,7 @@ const Navbar = () => {
     }
 
   return (
-    <div className={`flex items-center justify-between px-4 sm:px-20 md:px-14 lg:px-36 border-b border-gray-500 py-2 ${isCourseListPage ? 'bg-white' : 'bg-gradient-to-r from-indigo-500 from-5% via-sky-500 via-30% to-purple-500 to-90%'}`}>
+    <div className={`flex items-center justify-between px-4 sm:px-20 md:px-14 lg:px-36 border-b border-gray-500 py-2 ${isCourseListPage ? 'bg-gradient-to-r from-indigo-500 from-5% via-sky-500 via-30% to-purple-500 to-90%' : 'bg-gradient-to-r from-indigo-500 from-5% via-sky-500 via-30% to-purple-500 to-90%'}`}>
 
         <img  onClick={()=> navigate('/')} src={assets.CourseCampLogo} alt="Logo" className='w-40 lg:w-48 cursor-pointer'/>
 
